@@ -1,0 +1,38 @@
+## Business Actors
+
+* Customer
+* Seller
+* Delivery System
+* Payment System
+* Reviews
+* Items (Products)
+
+## Order Lifecycle & Participating Tables
+
+| Business Process         | Primary Table(s)                     Description                                 |
+| ------------------------ | ------------------------ | ----------------------------------------------------------------------------- |
+| Customer places an order | `customers`, `orders`    | A customer creates an order.                                                  |
+| Order contains products  | `order_items`            | Stores each product purchased within an order.                                |
+| Product information      | `products`               | Contains product details for each order item.                                 |
+| Seller fulfillment       | `sellers`, `order_items` | Identifies which seller is responsible for each order item.                   |
+| Payment processing       | `order_payments`         | Stores payment method, installments, and payment value.                       |
+| Order delivery           | `orders`, `geolocation`  | Tracks delivery status and timestamps. Geolocation provides location mapping. |
+| Customer review          | `order_reviews`          | Stores ratings and review comments submitted after delivery.                  |
+
+### Business Flow
+
+
+customers
+    ↓
+orders
+    ↓
+order_items
+    ├──► products
+    ├──► sellers
+    ├──► order_payments
+    ├──► orders (delivery status & timestamps)
+    └──► order_reviews
+
+
+
+
